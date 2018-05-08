@@ -1,0 +1,10 @@
+language: generic
+deploy:
+  provider: s3
+  access_key_id: AKIAJBVG2677NITAV37Q
+  secret_access_key:
+    secure: g8qVPRPDRuM7ciwBLhUNQuJ4N0L0+IYapQ/WDJ6M8paxkYkvTbxNX6MrQUn+WvFqW/H2WdwZD6uuln3BxU3N0FwcH2nImTBbgABnIg7tz4eTHTgo3AxpkQvqCkdxnaxjkTl7rcUTtU9BinpVf9KTNyyAlAzShjOwcW5z+ZZeQSKQxjUc1cOasMnjg2Rs+ESgM3UaItBK5XVpsGDhkff+I9OT7oLphwUF04KhSqQdpBvWri0TVZH/F8+3GIeFXSQNF/1IdaIJSYyFxTudfOvpMzmB887Wp7+Vx3VzSarUHpeaCbEvLtVh4dX4UKVVEFLvw0qjlDaXlrbkqx9/FEFmMYbz4dCpA69UgUazJuTw+wl+BbmvLXwC081Mq2/jFmg7VB1fxIHMey3aAxYXk65oC6HGd660IqEf7Z4froAoOXDhSVMjtp1BQBNi9ygcwcLkGP21IJQDo50P4sr1Jj8ZCcKW1xPE4o5gWudtVzKaA7bGmjnUVM2tJJHc7pjuT93x9ZnNa7v9HzYqvoCeSL9Cfy7Mmcbcd2Tl3aCUghymbwMBzLV+319bxE2CzXXUelRWenymw+kli+ghIS6q1iAdTBGOW7m9aWVDpd14aPqn/8l0X1mgpUlEIDdcZ/iwZbiCn7iRL4+NG0mv6rmz7MGSUJ5HbTLREJwhzBLKWG5tOCw=
+  bucket: webprogrammingknu
+  on:
+    repo: dolynchuk/hello-world
+  acl: public_read
