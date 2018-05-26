@@ -8,8 +8,8 @@ h1, h2, h3, p {
   margin: 0;
 }
 .element1 {
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 200px;
+  max-width: 200px;
   background-color: #bbdefb;
 }
 .element2 {
