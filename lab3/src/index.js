@@ -98,8 +98,8 @@ function app(document, window){
 
   function addDraggableBehaviour(card){
     function handleMouseMove(event){
-      var pageX = event.pageX;
-      var pageY = event.pageY;
+      var screenX = event.screenX;
+      var screenY = event.screenY;
 
       card.style.top = event.screenY - card.offsetHeight + 'px';
       card.style.left = event.screenX - card.offsetWidth + 'px';
@@ -107,22 +107,20 @@ function app(document, window){
       const asideButtonStyle = window.getComputedStyle(openAsideButton);
 
       var dropRect = asideButtonStyle.display === 'block'
-        ? openAsideButton.getBoundingClientRect()
-        : aside.getBoundingClientRect();
+        ? openAsideButton
+        : aside;
 
-      var top = dropRect.top;
-      var bottom = dropRect.top + dropRect.height;
-      var left = dropRect.left;
-      var right = dropRect.left + dropRect.width;
+      var top = dropRect.offsetTop;
+      var bottom = dropRect.offsetTop + dropRect.offsetHeight;
+      var left = dropRect.offsetLeft;
+      var right = dropRect.offsetLeft + dropRect.offsetWidth;
 
       var isUnderContainer = (
-        pageX > left
-        && pageX < right
-        && pageY > top
-        && pageY < bottom
+        screenX > left
+        && screenX < right
+        && screenY > top
+        && screenY < bottom
       );
-
-      console.log(isUnderContainer);
 
       if (isUnderContainer){
         addClass(card, 'ready');
@@ -132,6 +130,12 @@ function app(document, window){
     }
 
     card.addEventListener('mousedown', function(event){
+      var cardCopy = card.cloneNode(true);
+      card.parentNode.insertBefore(cardCopy, card);
+      cardCopy.addEventListener('mousedown', function(){
+        alert('вже додано у вибрані!');
+      });
+
       addClass(card, 'draggable');
       window.startX = event.screenX;
       window.startY = event.screenY;
@@ -141,33 +145,35 @@ function app(document, window){
       document.addEventListener('mousemove', handleMouseMove);
 
       card.addEventListener('mouseup', function(event){
-        var pageX = event.pageX;
-        var pageY = event.pageY;
+        var screenX = event.screenX;
+        var screenY = event.screenY;
 
         const asideButtonStyle = window.getComputedStyle(openAsideButton);
 
         var dropRect = asideButtonStyle.display === 'block'
-          ? openAsideButton.getBoundingClientRect()
-          : aside.getBoundingClientRect();
+          ? openAsideButton
+          : aside;
 
-        var top = dropRect.top;
-        var bottom = dropRect.top + dropRect.height;
-        var left = dropRect.left;
-        var right = dropRect.left + dropRect.width;
+        var top = dropRect.offsetTop;
+        var bottom = dropRect.offsetTop + dropRect.offsetHeight;
+        var left = dropRect.offsetLeft;
+        var right = dropRect.offsetLeft + dropRect.offsetWidth;
 
         var isDroppedInsideContainer = (
-          pageX > left
-          && pageX < right
-          && pageY > top
-          && pageY < bottom
+          screenX > left
+          && screenX < right
+          && screenY > top
+          && screenY < bottom
         );
 
         if (isDroppedInsideContainer){
-          var cardCopy = card;
-          card.parentNode.removeChild(card);
+          removeClass(card, 'draggable');
+          var cardCopy = card.cloneNode(true);
           dropBlock.appendChild(cardCopy);
+          card.parentNode.removeChild(card);
         } else {
           removeClass(card, 'draggable');
+          card.parentNode.removeChild(card);
         }
 
         document.removeEventListener('mousemove', handleMouseMove);
