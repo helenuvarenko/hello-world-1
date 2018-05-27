@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Інтернет зоомагазин</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="description" content="сайт">
+
+  <link rel="preload" as="style" href="index.css">
+  <link rel="preload" as="script" href="index.js">
+
+  <script src="polyfills/event.js"></script>
+  <script src="polyfills/querySelector.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script defer src="index.js"></script>
+</head>
+<body>
+  <div class="application-page">
+    <div class="header">
+      <a
+        class="logo"
+        href="/"
+      >
+        <img src="images/logo.png" alt=""/>
+        <span>Зоо магазин</span>
+      </a>
+      <div class="search">
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="navigation">
+      <ul class="navigation--list">
+        <li class="category active" data-value="all" data-selected="true">
+          Всі товари
+        </li>
+        <li class="category" data-value="dogs">
+          Собачки
+        </li>
+        <li class="category"  data-value="cats">
+          Котики
+        </li>
+        <li class="category" data-value="hamsters">
+          Хомячки
+        </li>
+        <div class="clearfix"></div>
+      </ul>
+    </div>
+    <div class="main-container">
+      <div id="feed" class="feed">
+      </div>
+      <div
+        class="selected"
+        id="selected"
+      >
+        <p>вибрані товари</p>
+        <div id="drop" class="drop-zone"></div>
+        <button
+          id="close-aside"
+          class="close-button"
+        >
+          x
+        </button>
+      </div>
+      <button
+        class="bottom-button"
+        id="open-aside"
+      >
+        +
+      </button>
+      <div class="clearfix"></div>
+    </div>
+    <div class="footer">
+      <p class="footer--title">Зв'язатися з нами:</p>
+      <div class="footer--contacts">
+        <p>Телефон: <a href="tel:+380955293045">+380955293045</a></p>
+        <p>E-mail: <a href="mailto:dolynchuk@lun.ua">dolynchuk@lun.ua</a></p>
+        <p>Адреса: вулиця Собача, 228</p>
+      </div>
+
+      <p>Зоо магазин ФОП Долинчук. Всі права застережено. 2018</p>
+    </div>
+  </div>
+</body>
+</html>
